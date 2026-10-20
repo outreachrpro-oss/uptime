@@ -1,26 +1,137 @@
 @import "tailwindcss";
 
+/* Twin.so–inspired cream / charcoal / yellow system — AROLAGB Uptime */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F9F6F0;
+  --foreground: #242017;
+  --card: #FFFFFF;
+  --card-foreground: #242017;
+  --primary: #FFDA40;
+  --primary-foreground: #1D1B16;
+  --secondary: #F4F2EB;
+  --secondary-foreground: #242017;
+  --muted: #F4F2EB;
+  --muted-foreground: #5C5C5C;
+  --accent: #FFDA40;
+  --accent-foreground: #1D1B16;
+  --success: #1F8A4C;
+  --warning: #C9911A;
+  --danger: #C23B2E;
+  --ink: #242017;
+  --ink-soft: #4A4436;
+  --cream: #F9F6F0;
+  --cream-deep: #F4F2EB;
+  --yellow: #FFDA40;
+  --border: #E8E4DA;
+  --ring: #242017;
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: #1A1814;
+  --foreground: #F9F6F0;
+  --card: #242017;
+  --card-foreground: #F9F6F0;
+  --primary: #FFDA40;
+  --primary-foreground: #1D1B16;
+  --secondary: #2E2A22;
+  --secondary-foreground: #F9F6F0;
+  --muted: #2E2A22;
+  --muted-foreground: #A39E92;
+  --accent: #FFDA40;
+  --accent-foreground: #1D1B16;
+  --border: #3A342A;
+  --ring: #FFDA40;
+  --ink: #F9F6F0;
+  --ink-soft: #C9C3B5;
+  --cream: #1A1814;
+  --cream-deep: #242017;
+  --yellow: #FFDA40;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-yellow: var(--yellow);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-fraunces);
   --font-mono: var(--font-geist-mono);
+  --radius-lg: var(--radius);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--border);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.font-display {
+  font-family: var(--font-fraunces), ui-serif, Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.twin-surface {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  box-shadow:
+    0 1px 2px rgba(36, 32, 23, 0.04),
+    0 12px 40px rgba(36, 32, 23, 0.06);
+}
+
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.7; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out both;
 }
