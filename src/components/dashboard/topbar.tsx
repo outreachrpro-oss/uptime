@@ -76,7 +76,7 @@ export function DashboardTopbar() {
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="relative size-9 rounded-full p-0">
             <Avatar className="size-9">
-              <AvatarFallback className="bg-primary/15 text-primary text-xs">
+              <AvatarFallback className="bg-yellow text-ink text-xs font-semibold">
                 {user ? initials(user.name) : "?"}
               </AvatarFallback>
             </Avatar>

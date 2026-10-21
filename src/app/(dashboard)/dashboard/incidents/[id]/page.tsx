@@ -160,7 +160,7 @@ export default function IncidentDetailPage() {
           <CardContent>
             <Link
               href={`/dashboard/monitors/${monitor._id}`}
-              className="text-indigo-600 hover:underline dark:text-indigo-400"
+              className="font-medium text-ink underline-offset-4 hover:underline"
             >
               {monitor.name}
             </Link>

@@ -50,14 +50,14 @@ export function DashboardSidebar({ onNavigate, className }: SidebarProps) {
   return (
     <aside
       className={cn(
-        "flex h-full w-64 flex-col border-r border-border bg-[#0B1220] text-slate-100",
+        "flex h-full w-64 flex-col border-r border-border bg-cream text-ink",
         className
       )}
     >
-      <div className="border-b border-white/10 px-4 py-5">
-        <Logo className="[&_span]:text-white" href="/dashboard" showText />
+      <div className="border-b border-border px-4 py-5">
+        <Logo href="/dashboard" showText />
         {organization ? (
-          <p className="mt-3 truncate text-xs text-slate-400">
+          <p className="mt-3 truncate text-xs text-ink-soft">
             {organization.name}
           </p>
         ) : null}
@@ -72,10 +72,10 @@ export function DashboardSidebar({ onNavigate, className }: SidebarProps) {
               href={item.href}
               onClick={onNavigate}
               className={cn(
-                "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
+                "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors",
                 active
-                  ? "bg-primary/20 text-white"
-                  : "text-slate-400 hover:bg-white/5 hover:text-white"
+                  ? "bg-ink text-cream"
+                  : "text-ink-soft hover:bg-cream-deep hover:text-ink"
               )}
             >
               <Icon className="size-4 shrink-0" aria-hidden />
@@ -88,10 +88,10 @@ export function DashboardSidebar({ onNavigate, className }: SidebarProps) {
             href="/admin"
             onClick={onNavigate}
             className={cn(
-              "mt-4 flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
+              "mt-4 flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors",
               pathname.startsWith("/admin")
-                ? "bg-primary/20 text-white"
-                : "text-slate-400 hover:bg-white/5 hover:text-white"
+                ? "bg-ink text-cream"
+                : "text-ink-soft hover:bg-cream-deep hover:text-ink"
             )}
           >
             <Shield className="size-4 shrink-0" aria-hidden />
