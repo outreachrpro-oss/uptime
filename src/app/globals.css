@@ -6,6 +6,8 @@
   --foreground: #242017;
   --card: #FFFFFF;
   --card-foreground: #242017;
+  --popover: #FFFFFF;
+  --popover-foreground: #242017;
   --primary: #FFDA40;
   --primary-foreground: #1D1B16;
   --secondary: #F4F2EB;
@@ -17,6 +19,9 @@
   --success: #1F8A4C;
   --warning: #C9911A;
   --danger: #C23B2E;
+  --destructive: #C23B2E;
+  --destructive-foreground: #FFFFFF;
+  --input: #E8E4DA;
   --ink: #242017;
   --ink-soft: #4A4436;
   --cream: #F9F6F0;
@@ -32,6 +37,8 @@
   --foreground: #F9F6F0;
   --card: #242017;
   --card-foreground: #F9F6F0;
+  --popover: #242017;
+  --popover-foreground: #F9F6F0;
   --primary: #FFDA40;
   --primary-foreground: #1D1B16;
   --secondary: #2E2A22;
@@ -40,6 +47,9 @@
   --muted-foreground: #A39E92;
   --accent: #FFDA40;
   --accent-foreground: #1D1B16;
+  --destructive: #C23B2E;
+  --destructive-foreground: #FFFFFF;
+  --input: #3A342A;
   --border: #3A342A;
   --ring: #FFDA40;
   --ink: #F9F6F0;
@@ -54,6 +64,8 @@
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
@@ -61,15 +73,19 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-danger: var(--danger);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-cream: var(--cream);
   --color-cream-deep: var(--cream-deep);
   --color-yellow: var(--yellow);
   --color-border: var(--border);
+  --color-input: var(--input);
   --color-ring: var(--ring);
   --font-sans: var(--font-inter);
   --font-serif: var(--font-fraunces);
