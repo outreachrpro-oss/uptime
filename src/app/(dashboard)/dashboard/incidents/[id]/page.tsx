@@ -194,7 +194,7 @@ export default function IncidentDetailPage() {
           <CardContent>
             <ul className="space-y-3">
               {incident.events.map((event, i) => (
-                <li key={i} className="border-l-2 border-indigo-500/40 pl-3 text-sm">
+                <li key={i} className="border-l-2 border-yellow pl-3 text-sm">
                   <p className="text-xs text-muted-foreground">
                     {new Date(event.createdAt).toLocaleString("en-GB")} · {event.type}
                   </p>
