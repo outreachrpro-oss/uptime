@@ -71,7 +71,7 @@ export const faqItems: FaqItem[] = [
     category: "Billing",
     question: "Can pricing change?",
     answer:
-      "Published prices are illustrative until confirmed by the operator. We may update pricing with notice as described in our Terms of Service. Existing subscriptions are handled according to the terms in effect at renewal.",
+      "We may update pricing with notice as described in our Terms of Service. Existing subscriptions are handled according to the terms in effect at renewal.",
   },
   {
     id: "cancel",
@@ -92,13 +92,6 @@ export const faqItems: FaqItem[] = [
     question: "Do you guarantee 100% uptime for the monitoring service?",
     answer:
       "No. Like any online service, our platform may experience maintenance or unexpected outages. We aim to operate reliably but do not guarantee uninterrupted availability of the monitoring service itself.",
-  },
-  {
-    id: "legal-review",
-    category: "Legal",
-    question: "Are policies final?",
-    answer:
-      "Terms, privacy, cookie, refund, and cancellation policies are provided as UK-oriented SaaS drafts and are subject to legal review before production use.",
   },
 ];
 

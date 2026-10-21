@@ -38,12 +38,12 @@ export function PricingPlans({ compact }: PricingPlansProps) {
   return (
     <div>
       <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-        <div className="inline-flex rounded-full border border-border bg-white p-1 shadow-sm">
+        <div className="inline-flex border border-border bg-cream p-1">
           <button
             type="button"
             onClick={() => setYearly(false)}
             className={cn(
-              "rounded-full px-4 py-1.5 text-sm font-medium transition-colors",
+              "px-4 py-1.5 text-sm font-medium transition-colors",
               !yearly ? "bg-ink text-cream" : "text-ink-soft hover:text-ink"
             )}
           >
@@ -53,21 +53,21 @@ export function PricingPlans({ compact }: PricingPlansProps) {
             type="button"
             onClick={() => setYearly(true)}
             className={cn(
-              "rounded-full px-4 py-1.5 text-sm font-medium transition-colors",
+              "px-4 py-1.5 text-sm font-medium transition-colors",
               yearly ? "bg-ink text-cream" : "text-ink-soft hover:text-ink"
             )}
           >
             Yearly
           </button>
         </div>
-        <p className="text-xs text-slate-500">
-          Prices are illustrative pending client approval.
+        <p className="text-xs text-muted-foreground">
+          Billed in GBP. Cancel anytime from billing settings.
         </p>
       </div>
 
       <div
         className={cn(
-          "mt-8 grid gap-6",
+          "mt-10 grid gap-px overflow-hidden border border-border bg-border",
           compact ? "md:grid-cols-3" : "lg:grid-cols-3"
         )}
       >
@@ -81,18 +81,20 @@ export function PricingPlans({ compact }: PricingPlansProps) {
             <Card
               key={id}
               className={cn(
-                "relative flex flex-col border-border bg-white",
-                highlighted && "ring-2 ring-ink shadow-lg"
+                "relative flex flex-col rounded-none border-0 shadow-none",
+                highlighted ? "bg-cream ring-2 ring-inset ring-ink" : "bg-white"
               )}
             >
               {highlighted && (
-                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 border-0 bg-yellow text-ink">
+                <Badge className="absolute left-6 top-6 rounded-sm border-0 bg-yellow text-ink">
                   Popular
                 </Badge>
               )}
-              <CardHeader>
-                <CardTitle>{plan.name}</CardTitle>
-                <CardDescription>{plan.description}</CardDescription>
+              <CardHeader className={cn(highlighted && "pt-14")}>
+                <CardTitle className="text-ink">{plan.name}</CardTitle>
+                <CardDescription className="text-ink-soft">
+                  {plan.description}
+                </CardDescription>
                 <p className="font-display pt-2 text-3xl text-ink">
                   {formatPrice(price, plan.currency)}
                   {price > 0 && (
@@ -103,7 +105,7 @@ export function PricingPlans({ compact }: PricingPlansProps) {
                 </p>
               </CardHeader>
               <CardContent className="flex-1">
-                <ul className="space-y-2.5 text-sm text-ink-soft">
+                <ul className="space-y-2.5 border-t border-border pt-5 text-sm text-ink-soft">
                   {plan.features.map((f) => (
                     <li key={f} className="flex gap-2">
                       <Check className="mt-0.5 size-4 shrink-0 text-ink" />

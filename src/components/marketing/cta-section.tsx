@@ -18,18 +18,18 @@ export function CtaSection({
   return (
     <section
       className={cn(
-        "relative overflow-hidden rounded-2xl bg-ink px-6 py-12 text-cream sm:px-10 sm:py-14",
+        "relative overflow-hidden border border-ink bg-ink px-6 py-14 text-cream sm:px-10 sm:py-16",
         className
       )}
     >
-      <div className="relative mx-auto max-w-2xl text-center">
-        <h2 className="font-display text-2xl tracking-tight sm:text-3xl">
+      <div className="relative max-w-2xl">
+        <h2 className="font-display text-2xl leading-[1.15] tracking-tight sm:text-3xl lg:text-4xl">
           {title}
         </h2>
-        <p className="mt-3 text-sm leading-relaxed text-cream/70 sm:text-base">
+        <p className="mt-4 text-sm leading-relaxed text-cream/70 sm:text-base">
           {description}
         </p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button size="lg" asChild className="min-w-[200px]">
             <Link href="/register">Start Monitoring Free</Link>
           </Button>

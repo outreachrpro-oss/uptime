@@ -2,6 +2,8 @@ import Link from "next/link";
 
 import { CtaSection } from "@/components/marketing/cta-section";
 import { DashboardPreview } from "@/components/marketing/dashboard-preview";
+import { PageIntro } from "@/components/marketing/page-intro";
+import { ProcessColumns } from "@/components/marketing/process-columns";
 import { Button } from "@/components/ui/button";
 import { appConfig } from "@/lib/config";
 import { howItWorksSteps } from "@/lib/marketing/content";
@@ -16,53 +18,78 @@ export const metadata = createPageMetadata({
 export default function HowItWorksPage() {
   return (
     <>
-      <section className="border-b border-slate-200 bg-white py-14">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold tracking-tight text-[#0B1220] sm:text-4xl">
-            How it works
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg text-slate-600">
-            {appConfig.name} runs scheduled checks from outside your network, stores
-            results for analysis, and notifies you when configured conditions are met.
-          </p>
+      <PageIntro
+        eyebrow="How it works"
+        title="From URL to alert — without guesswork"
+        description={`${appConfig.name} runs scheduled checks from outside your network, stores results for analysis, and notifies you when configured conditions are met.`}
+      />
+
+      <section className="border-t border-border bg-white px-4 py-20 sm:px-6">
+        <div className="mx-auto max-w-6xl">
+          <ol className="divide-y divide-border border-y border-border">
+            {howItWorksSteps.map((step) => (
+              <li
+                key={step.step}
+                className="grid gap-6 py-10 sm:grid-cols-[5rem_1fr] sm:gap-12"
+              >
+                <span className="font-display text-4xl tabular-nums text-ink/20 sm:text-5xl">
+                  {String(step.step).padStart(2, "0")}
+                </span>
+                <div>
+                  <h2 className="font-display text-2xl text-ink sm:text-3xl">
+                    {step.title}
+                  </h2>
+                  <p className="mt-3 max-w-2xl text-base leading-relaxed text-ink-soft">
+                    {step.description}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
-        <ol className="space-y-10">
-          {howItWorksSteps.map((step) => (
-            <li key={step.step} className="flex gap-6">
-              <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-ink text-cream text-sm font-bold text-white">
-                {step.step}
-              </span>
-              <div>
-                <h2 className="text-xl font-semibold text-[#0B1220]">{step.title}</h2>
-                <p className="mt-2 max-w-2xl text-slate-600">{step.description}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </section>
+      <ProcessColumns
+        eyebrow="Inside the loop"
+        title="You can stop after the first monitor. We designed it that way."
+        description="Add one endpoint, confirm checks land, then expand monitors and alert channels only when the signal is useful."
+        columns={[
+          {
+            title: "Add one check",
+            body: "Start with a homepage, API, or checkout URL. Set interval and failure threshold before you add the rest of the estate.",
+          },
+          {
+            title: "Decide on evidence",
+            body: "Open the dashboard, review stored checks, and confirm alerts fire where your team actually works.",
+          },
+          {
+            title: "Keep the knowledge",
+            body: "History, incidents, and configuration stay in your workspace. Upgrade plans when limits — not marketing — require it.",
+          },
+        ]}
+      />
 
-      <section className="border-y border-slate-200 bg-slate-50 py-14">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-[#0B1220]">Your dashboard</h2>
-          <p className="mt-2 max-w-xl text-slate-600">
-            Review monitor health, sample analytics, and incident history in one place.
-            Preview below uses demo data only.
+      <section className="border-t border-border bg-cream px-4 py-20 sm:px-6">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="font-display text-3xl tracking-tight text-ink sm:text-4xl">
+            Your dashboard
+          </h2>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-ink-soft">
+            Review monitor health, analytics, and incident history in one place.
           </p>
-          <DashboardPreview className="mt-8" />
+          <DashboardPreview className="mt-10" />
+          <div className="mt-10">
+            <Button asChild size="lg">
+              <Link href="/register">Start Monitoring Free</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-14 text-center sm:px-6 lg:px-8">
-        <Button asChild size="lg" className="bg-ink text-cream hover:bg-[#353028]">
-          <Link href="/register">Start Monitoring Free</Link>
-        </Button>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 lg:px-8">
-        <CtaSection />
+      <section className="border-t border-border bg-white px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-6xl">
+          <CtaSection />
+        </div>
       </section>
     </>
   );

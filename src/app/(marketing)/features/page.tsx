@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 import { CtaSection } from "@/components/marketing/cta-section";
+import { PageIntro } from "@/components/marketing/page-intro";
 import { Button } from "@/components/ui/button";
 import { appConfig } from "@/lib/config";
 import { createPageMetadata } from "@/lib/marketing/metadata";
@@ -73,38 +74,37 @@ const sections = [
 export default function FeaturesPage() {
   return (
     <>
-      <section className="border-b border-slate-200 bg-white py-14">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold tracking-tight text-[#0B1220] sm:text-4xl">
-            Features
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg text-slate-600">
-            Everything you need to watch critical endpoints, alert the right people,
-            and explain incidents clearly — in one {appConfig.name} workspace.
-          </p>
-          <Button asChild className="mt-6 bg-ink text-cream hover:bg-[#353028]">
-            <Link href="/register">Start Monitoring Free</Link>
-          </Button>
+      <PageIntro
+        eyebrow="Product"
+        title="Features"
+        description={`Everything you need to watch critical endpoints, alert the right people, and explain incidents clearly — in one ${appConfig.name} workspace.`}
+      >
+        <Button asChild>
+          <Link href="/register">Start Monitoring Free</Link>
+        </Button>
+      </PageIntro>
+
+      <section className="bg-white px-4 py-20 sm:px-6">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+            {sections.map(({ icon: Icon, title, body }, index) => (
+              <article key={title} className="bg-cream p-7 sm:p-8" id={title === "Public status pages" ? "status-pages" : undefined}>
+                <p className="font-display text-2xl tabular-nums text-ink/20">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <Icon className="mt-5 size-5 text-ink" />
+                <h2 className="mt-4 font-display text-xl text-ink">{title}</h2>
+                <p className="mt-3 text-sm leading-relaxed text-ink-soft">{body}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {sections.map(({ icon: Icon, title, body }) => (
-            <article
-              key={title}
-              className="rounded-xl border border-slate-200 bg-white p-6 transition-shadow hover:shadow-md"
-            >
-              <Icon className="size-6 text-ink" />
-              <h2 className="mt-4 text-lg font-semibold text-[#0B1220]">{title}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">{body}</p>
-            </article>
-          ))}
+      <section className="border-t border-border bg-cream px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-6xl">
+          <CtaSection />
         </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 lg:px-8">
-        <CtaSection />
       </section>
     </>
   );

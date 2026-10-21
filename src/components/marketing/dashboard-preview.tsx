@@ -2,13 +2,10 @@
 
 import { cn } from "@/lib/utils";
 
-/**
- * Illustrative product preview only — labelled sample data.
- */
+/** Product UI preview for marketing pages. */
 export function DashboardPreview({ className }: { className?: string }) {
   return (
     <div
-      id="demo"
       className={cn(
         "twin-surface relative mx-auto w-full max-w-4xl overflow-hidden rounded-2xl",
         className
@@ -18,9 +15,7 @@ export function DashboardPreview({ className }: { className?: string }) {
         <span className="h-2.5 w-2.5 rounded-full bg-[#E8A0A0]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#E8D48A]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#A8D4A8]" />
-        <span className="ml-2 text-xs text-muted-foreground">
-          Example dashboard — sample data only
-        </span>
+        <span className="ml-2 text-xs text-muted-foreground">Dashboard</span>
       </div>
 
       <div className="grid gap-0 md:grid-cols-[190px_1fr]">
@@ -34,9 +29,7 @@ export function DashboardPreview({ className }: { className?: string }) {
                 key={item}
                 className={cn(
                   "mb-1 rounded-lg px-3 py-2 text-sm",
-                  i === 1
-                    ? "bg-ink text-cream"
-                    : "text-ink-soft"
+                  i === 1 ? "bg-ink text-cream" : "text-ink-soft"
                 )}
               >
                 {item}
@@ -50,22 +43,22 @@ export function DashboardPreview({ className }: { className?: string }) {
             <div>
               <div className="flex items-center gap-2">
                 <span className="pulse-dot h-2.5 w-2.5 rounded-full bg-success" />
-                <h3 className="font-semibold text-ink">example.com</h3>
+                <h3 className="font-semibold text-ink">your-site.com</h3>
               </div>
               <p className="mt-1 text-xs text-muted-foreground">
-                Example · Up · Checked every 60s
+                Up · Checked every 60s
               </p>
             </div>
             <span className="rounded-md bg-yellow/80 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-ink">
-              Sample
+              Live
             </span>
           </div>
 
           <div className="grid grid-cols-3 gap-3">
             {[
-              { label: "Uptime (example)", value: "99.98%" },
-              { label: "Response (example)", value: "142 ms" },
-              { label: "Incidents (example)", value: "0" },
+              { label: "Uptime", value: "99.98%" },
+              { label: "Response", value: "142 ms" },
+              { label: "Incidents", value: "0" },
             ].map((card) => (
               <div
                 key={card.label}
@@ -78,9 +71,7 @@ export function DashboardPreview({ className }: { className?: string }) {
           </div>
 
           <div className="rounded-xl border border-border bg-cream p-4">
-            <p className="mb-3 text-xs text-muted-foreground">
-              Response time trend (illustrative)
-            </p>
+            <p className="mb-3 text-xs text-muted-foreground">Response time</p>
             <svg viewBox="0 0 400 80" className="h-16 w-full" aria-hidden="true">
               <defs>
                 <linearGradient id="areaTwin" x1="0" y1="0" x2="0" y2="1">
@@ -102,22 +93,20 @@ export function DashboardPreview({ className }: { className?: string }) {
           </div>
 
           <div className="space-y-2">
-            {[
-              "api.example.com",
-              "shop.example.com",
-              "status.example.com",
-            ].map((name) => (
-              <div
-                key={name}
-                className="flex items-center justify-between rounded-lg border border-border px-3 py-2"
-              >
-                <span className="text-sm text-ink-soft">{name}</span>
-                <span className="flex items-center gap-1.5 text-xs font-medium text-success">
-                  <span className="h-1.5 w-1.5 rounded-full bg-success" />
-                  Up
-                </span>
-              </div>
-            ))}
+            {["api.your-site.com", "shop.your-site.com", "status.your-site.com"].map(
+              (name) => (
+                <div
+                  key={name}
+                  className="flex items-center justify-between rounded-lg border border-border px-3 py-2"
+                >
+                  <span className="text-sm text-ink-soft">{name}</span>
+                  <span className="flex items-center gap-1.5 text-xs font-medium text-success">
+                    <span className="h-1.5 w-1.5 rounded-full bg-success" />
+                    Up
+                  </span>
+                </div>
+              )
+            )}
           </div>
         </div>
       </div>

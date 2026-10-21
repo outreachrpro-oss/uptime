@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 import { CtaSection } from "@/components/marketing/cta-section";
+import { PageIntro } from "@/components/marketing/page-intro";
 import { appConfig, companyConfig } from "@/lib/config";
 import { createPageMetadata } from "@/lib/marketing/metadata";
 
@@ -13,76 +15,66 @@ export const metadata = createPageMetadata({
 export default function AboutPage() {
   return (
     <>
-      <section className="border-b border-slate-200 bg-white py-14">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold tracking-tight text-[#0B1220] sm:text-4xl">
-            About {appConfig.name}
-          </h1>
-          <p className="mt-4 text-lg text-slate-600">{appConfig.subheadline}</p>
+      <PageIntro
+        eyebrow="Company"
+        title={`About ${appConfig.name}`}
+        description={appConfig.subheadline}
+      />
+
+      <section className="border-t border-border bg-white px-4 py-20 sm:px-6">
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)] lg:gap-20">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+            The product
+          </p>
+          <div>
+            <p className="text-lg leading-relaxed text-ink sm:text-xl">
+              {appConfig.name} is a software-as-a-service platform for uptime and
+              performance monitoring. Organizations add monitors for websites, APIs,
+              and related infrastructure, configure alert channels, and use dashboards
+              and optional status pages to stay informed when availability changes.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl space-y-8 px-4 py-14 sm:px-6 lg:px-8">
-        <div>
-          <h2 className="text-xl font-semibold text-[#0B1220]">The product</h2>
-          <p className="mt-3 leading-relaxed text-slate-600">
-            {appConfig.name} is a software-as-a-service platform for uptime and
-            performance monitoring. Organizations add monitors for websites, APIs,
-            and related infrastructure, configure alert channels, and use dashboards
-            and optional status pages to stay informed when availability changes.
+      <section className="border-t border-border bg-cream px-4 py-20 sm:px-6">
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)] lg:gap-20">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+            The company
           </p>
-        </div>
-
-        <div>
-          <h2 className="text-xl font-semibold text-[#0B1220]">The company</h2>
-          <p className="mt-3 leading-relaxed text-slate-600">
-            {appConfig.name} is operated by {companyConfig.legalName}, a company
-            registered in {companyConfig.jurisdiction} (Company No.{" "}
-            {companyConfig.registrationNumber}). Registered office:{" "}
-            {companyConfig.registeredOffice.full}. Primary activity (SIC):{" "}
-            {companyConfig.sicCode}.
-          </p>
-          <p className="mt-3 leading-relaxed text-slate-600">
+          <div className="space-y-6">
+            <p className="text-base leading-relaxed text-ink-soft sm:text-lg">
+              {appConfig.name} is operated by {companyConfig.legalName}, a company
+              registered in {companyConfig.jurisdiction} (Company No.{" "}
+              {companyConfig.registrationNumber}). Registered office:{" "}
+              {companyConfig.registeredOffice.full}. Primary activity (SIC):{" "}
+              {companyConfig.sicCode}.
+            </p>
             <a
               href={companyConfig.companiesHouseUrl}
-              className="text-ink hover:underline"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-ink underline-offset-4 hover:underline"
               target="_blank"
               rel="noopener noreferrer"
             >
               View company record on Companies House
+              <ArrowUpRight className="h-4 w-4" />
             </a>
-          </p>
+
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-ink underline-offset-4 hover:underline"
+            >
+              Contact us
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
-
-        {companyConfig.operatorConfirmationRequired && (
-          <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-4 text-sm text-amber-950">
-            <strong>Operator confirmation required.</strong> Production launch and
-            certain billing or compliance steps require explicit confirmation from
-            the operator before this service is offered to paying customers at scale.
-          </div>
-        )}
-
-        {companyConfig.confirmationStatementReviewRequired && (
-          <div className="rounded-lg border border-slate-200 bg-slate-50 px-4 py-4 text-sm text-slate-700">
-            Companies House filings (including confirmation statements) should be
-            reviewed by the client to ensure records remain accurate and up to date.
-          </div>
-        )}
-
-        <p className="text-sm text-slate-600">
-          We do not publish customer counts, awards, or testimonials on this site
-          unless they are verified and approved for display.
-        </p>
-
-        <p>
-          <Link href="/contact" className="text-ink hover:underline">
-            Contact us →
-          </Link>
-        </p>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 lg:px-8">
-        <CtaSection />
+      <section className="border-t border-border bg-white px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-6xl">
+          <CtaSection />
+        </div>
       </section>
     </>
   );

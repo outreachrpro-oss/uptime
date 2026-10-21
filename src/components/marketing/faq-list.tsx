@@ -38,29 +38,37 @@ export function FaqList({ limit, searchable = false }: FaqListProps) {
   return (
     <div>
       {searchable && (
-        <div className="relative mb-6 max-w-md">
-          <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
+        <div className="relative mb-8 max-w-md">
+          <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             type="search"
             placeholder="Search FAQs…"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="pl-9 bg-white"
+            className="border-border bg-cream pl-9"
             aria-label="Search FAQs"
           />
         </div>
       )}
 
       {items.length === 0 ? (
-        <p className="text-sm text-slate-600">No matching questions found.</p>
+        <p className="text-sm text-ink-soft">No matching questions found.</p>
       ) : (
-        <Accordion type="single" collapsible className="rounded-xl border border-slate-200 bg-white px-4">
+        <Accordion
+          type="single"
+          collapsible
+          className="divide-y divide-border border-y border-border"
+        >
           {items.map((item) => (
-            <AccordionItem key={item.id} value={item.id}>
-              <AccordionTrigger className="text-left text-base">
+            <AccordionItem
+              key={item.id}
+              value={item.id}
+              className="border-0 px-0"
+            >
+              <AccordionTrigger className="py-5 text-left text-base font-medium text-ink hover:no-underline">
                 {item.question}
               </AccordionTrigger>
-              <AccordionContent className="text-slate-600">
+              <AccordionContent className="pb-5 text-ink-soft">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>

@@ -1,4 +1,5 @@
 import { ContactForm } from "@/components/marketing/contact-form";
+import { PageIntro } from "@/components/marketing/page-intro";
 import { appConfig, companyConfig, emailConfig } from "@/lib/config";
 import { createPageMetadata } from "@/lib/marketing/metadata";
 
@@ -11,72 +12,80 @@ export const metadata = createPageMetadata({
 export default function ContactPage() {
   return (
     <>
-      <section className="border-b border-slate-200 bg-white py-14">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold tracking-tight text-[#0B1220] sm:text-4xl">
-            Contact us
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg text-slate-600">
-            Reach {companyConfig.legalName} for product questions, billing, or
-            support. We respond by email when possible.
-          </p>
-        </div>
-      </section>
+      <PageIntro
+        eyebrow="Contact"
+        title="Contact us"
+        description={`Reach ${companyConfig.legalName} for product questions, billing, or support. We respond by email when possible.`}
+      />
 
-      <section className="mx-auto grid max-w-6xl gap-12 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:px-8">
-        <div className="rounded-xl border border-slate-200 bg-white p-6">
-          <h2 className="text-lg font-semibold text-[#0B1220]">Company details</h2>
-          <dl className="mt-4 space-y-3 text-sm text-slate-600">
-            <div>
-              <dt className="font-medium text-slate-900">Legal name</dt>
-              <dd>{companyConfig.legalName}</dd>
-            </div>
-            <div>
-              <dt className="font-medium text-slate-900">Company number</dt>
-              <dd>
-                <a
-                  href={companyConfig.companiesHouseUrl}
-                  className="text-ink hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {companyConfig.registrationNumber}
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="font-medium text-slate-900">Registered office</dt>
-              <dd>{companyConfig.registeredOffice.full}</dd>
-            </div>
-            <div>
-              <dt className="font-medium text-slate-900">Support</dt>
-              <dd>
-                <a
-                  href={`mailto:${emailConfig.support}`}
-                  className="text-ink hover:underline"
-                >
-                  {emailConfig.support}
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="font-medium text-slate-900">General enquiries</dt>
-              <dd>
-                <a
-                  href={`mailto:${emailConfig.contact}`}
-                  className="text-ink hover:underline"
-                >
-                  {emailConfig.contact}
-                </a>
-              </dd>
-            </div>
-          </dl>
-        </div>
+      <section className="border-t border-border bg-white px-4 py-20 sm:px-6">
+        <div className="mx-auto grid max-w-6xl gap-px overflow-hidden border border-border bg-border lg:grid-cols-2">
+          <div className="bg-cream p-8 sm:p-10">
+            <h2 className="font-display text-2xl text-ink">Company details</h2>
+            <dl className="mt-8 space-y-6 text-sm">
+              <div className="border-b border-border pb-5">
+                <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                  Legal name
+                </dt>
+                <dd className="mt-2 text-ink">{companyConfig.legalName}</dd>
+              </div>
+              <div className="border-b border-border pb-5">
+                <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                  Company number
+                </dt>
+                <dd className="mt-2">
+                  <a
+                    href={companyConfig.companiesHouseUrl}
+                    className="font-medium text-ink underline-offset-4 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {companyConfig.registrationNumber}
+                  </a>
+                </dd>
+              </div>
+              <div className="border-b border-border pb-5">
+                <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                  Registered office
+                </dt>
+                <dd className="mt-2 text-ink-soft">
+                  {companyConfig.registeredOffice.full}
+                </dd>
+              </div>
+              <div className="border-b border-border pb-5">
+                <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                  Support
+                </dt>
+                <dd className="mt-2">
+                  <a
+                    href={`mailto:${emailConfig.support}`}
+                    className="font-medium text-ink underline-offset-4 hover:underline"
+                  >
+                    {emailConfig.support}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                  General enquiries
+                </dt>
+                <dd className="mt-2">
+                  <a
+                    href={`mailto:${emailConfig.contact}`}
+                    className="font-medium text-ink underline-offset-4 hover:underline"
+                  >
+                    {emailConfig.contact}
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </div>
 
-        <div className="rounded-xl border border-slate-200 bg-white p-6">
-          <h2 className="text-lg font-semibold text-[#0B1220]">Send a message</h2>
-          <div className="mt-4">
-            <ContactForm />
+          <div className="bg-white p-8 sm:p-10">
+            <h2 className="font-display text-2xl text-ink">Send a message</h2>
+            <div className="mt-8">
+              <ContactForm />
+            </div>
           </div>
         </div>
       </section>

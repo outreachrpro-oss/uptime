@@ -1,44 +1,86 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 import { companyConfig } from "@/lib/config";
+import { cn } from "@/lib/utils";
+
+const relatedLinks = [
+  { href: "/terms", label: "Terms of Service" },
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/cookies", label: "Cookie Policy" },
+  { href: "/refund-policy", label: "Refund Policy" },
+  { href: "/cancellation-policy", label: "Cancellation Policy" },
+] as const;
 
 type LegalPageShellProps = {
   title: string;
   lastUpdated?: string;
   children: React.ReactNode;
+  currentPath?: string;
 };
 
 export function LegalPageShell({
   title,
   lastUpdated = "20 October 2025",
   children,
+  currentPath,
 }: LegalPageShellProps) {
   return (
-    <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:py-16">
-      <p className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-        <strong>Subject to legal review.</strong> This draft is provided for
-        website launch purposes and must be reviewed by qualified advisers before
-        reliance in production.
-      </p>
-      <header className="mt-8 border-b border-slate-200 pb-6">
-        <h1 className="text-3xl font-bold tracking-tight text-[#0B1220]">
-          {title}
-        </h1>
-        <p className="mt-2 text-sm text-slate-600">
-          Last updated: {lastUpdated} · {companyConfig.legalName} (Company No.{" "}
-          {companyConfig.registrationNumber})
-        </p>
-      </header>
-      <div className="prose prose-slate mt-8 max-w-none prose-headings:scroll-mt-24 prose-a:text-ink">
-        {children}
-      </div>
-      <p className="mt-12 text-sm text-slate-600">
-        Questions? See our{" "}
-        <Link href="/contact" className="text-ink hover:underline">
-          contact page
-        </Link>
-        .
-      </p>
-    </article>
+    <>
+      <section className="border-b border-border bg-cream px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-3xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+            Legal
+          </p>
+          <h1 className="font-display mt-3 text-4xl leading-[1.1] tracking-tight text-ink sm:text-5xl">
+            {title}
+          </h1>
+          <p className="mt-5 text-base text-ink-soft">
+            Last updated: {lastUpdated} · {companyConfig.legalName} (Company No.{" "}
+            {companyConfig.registrationNumber})
+          </p>
+        </div>
+      </section>
+
+      <section className="border-b border-border bg-white px-4 py-12 sm:px-6 sm:py-16">
+        <div className="mx-auto max-w-3xl">
+          <nav
+            aria-label="Legal documents"
+            className="flex flex-wrap gap-x-1 gap-y-2 border-b border-border pb-8"
+          >
+            {relatedLinks.map((link) => {
+              const active = currentPath === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "px-3 py-1.5 text-sm transition-colors",
+                    active
+                      ? "bg-ink text-cream"
+                      : "text-ink-soft hover:bg-cream-deep hover:text-ink"
+                  )}
+                  aria-current={active ? "page" : undefined}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          <div className="mt-2">{children}</div>
+
+          <p className="mt-10 border-t border-border pt-8 text-sm text-ink-soft">
+            Questions? See our{" "}
+            <Link
+              href="/contact"
+              className="font-medium text-ink underline-offset-4 hover:underline"
+            >
+              contact page
+            </Link>
+            .
+          </p>
+        </div>
+      </section>
+    </>
   );
 }

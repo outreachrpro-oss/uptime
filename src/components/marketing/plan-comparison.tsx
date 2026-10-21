@@ -114,7 +114,6 @@ export function PlanComparison() {
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-white/65 sm:text-base">
             Compare limits and capabilities across Starter, Pro, and Business.
-            Prices remain illustrative pending client approval.
           </p>
         </div>
 
